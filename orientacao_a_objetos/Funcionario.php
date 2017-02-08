@@ -1,8 +1,8 @@
 <?php
 
 class Funcionario {
-	private $nome = "";
-	private $salario = 0;
+	private $nome;
+	private $salario;
 
 	public function __construct($nome, $salario) {
 	       $this->salario = $salario;
@@ -10,13 +10,15 @@ class Funcionario {
 	}
 
 	public function aumentaSalario($valor) {
-	       $this->salario += $salario;
+	       $this->salario += $valor;
 	}
 	
 	public function consultaDados() {
-	       echo "\nFuncionário\n";
-	       echo "nome: " . $this->nome . "\n";
-	       echo "salário: " . $this->salario . " R\$\n";
+	       echo "Funcionário:\n";
+	       echo "    nome: $this->nome\n";
+	       echo "    salário: $this->salario R\$\n";
 	}
 
 }
+
+?>

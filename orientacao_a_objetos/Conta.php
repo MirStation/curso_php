@@ -1,57 +1,63 @@
 <?php
 
 class Conta {
-	private $numero = 0;
-	private $saldo = 0;
-	private $limite = 0;
-	private $agencia;
-
-	private $extrato = "";
+	private $numero;
+	private $saldo;
+	private $limite;
+	private $agencia = NULL;
+	private $extrato = [];
 
 	public function __construct($numero, $saldo, $limite) {
 	       $this->numero = $numero;
 	       $this->saldo = $saldo;
 	       $this->limite = $limite;
-	       $this->extrato .= "{$this->saldo}\n";
+	       array_push($this->extrato, "$saldo R\$");
 	}
 
 	public function deposita($valor) {
 	       $this->saldo += $valor;
-	       $this->extrato .= "+{$valor}\n";
-	       $this->extrato .= "{$this->saldo}\n";
+	       array_push($this->extrato, "+$valor R\$");
+	       array_push($this->extrato, "$this->saldo R\$");
 	}
 
 	public function saca($valor) {
-	       if ($valor <= $this->saldo) {
+	       if ($valor <= $this->saldo || $valor <= $this->limite) {
 	       	  $this->saldo -= $valor;
-		  $this->extrato .= "-{$valor}\n";
-		  $this->extrato .= "{$this->saldo}\n";
+		  array_push($this->extrato, "-$valor R\$");
+		  array_push($this->extrato, "$this->saldo R\$");
+	       } else if ($valor > $this->limite) {
+	       	  echo "O valor de saque é maior que o limite permitido.\n";
 	       } else {
-	       	  echo "Saldo insufuciente.\n"
+	       	  echo "Saldo insufuciente.\n";
 	       }
 	}
 
 	public function consultaSaldoDisponivel() {
-	       echo "{$this->saldo} R\$\n";
+	       echo "Saldo: $this->saldo R\$\n";
 	}
 
 	public function imprimeExtrato() {
-	       echo $this->extrato;
+	       echo "Extrato:\n";	   
+	       for ($i = 0; $i < count($this->extrato); $i++) {
+	       	   echo "    {$this->extrato[$i]}\n";	   
+	       }
 	}
 
 	public function setAgencia($agencia) {
 	       $this->agencia = $agencia;
 	}
 	
-	public function imprimeConta() {
-	       echo "\nConta\n";
-	       echo "número: " . $this->numero . "\n";
-	       echo "saldo: " . $this->saldo . " R\$\n";
-	       echo "limite: " . $this->limite . " R\$\n";
+	public function imprimeDadosDaConta() {
+	       echo "Conta:\n";
+	       echo "    número: $this->numero\n";
+	       echo "    saldo: $this->saldo R\$\n";
+	       echo "    limite: $this->limite R\$\n";
 	}
 
-	public function imprimeAgencia() {
-	       $this->agencia->imprimeAgencia();
+	public function imprimeDadosDaAgencia() {
+	       $this->agencia->imprimeDadosDaAgencia();
 	}
 
 }
+
+?>

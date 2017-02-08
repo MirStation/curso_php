@@ -8,3 +8,4 @@ $funcionario1->consultaDados();
 $funcionario2 = new Funcionario('Rafael Cosentino', 2000.88);
 $funcionario2->consultaDados();
 
+?>

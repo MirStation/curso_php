@@ -7,17 +7,11 @@ class Agencia {
 	       $this->numero = $numero;
 	}
 
-	public function getNumero() {
-	       return $this->numero;
-	}
-
-	public function setNumero($numero) {
-	       $this->numero = $numero;
-	}
-	
-	public function imprimeAgencia() {
-	       echo "\nAgência\n";
-	       echo "numero: " . $this->numero . "\n";
+	public function imprimeDadosDaAgencia() {
+	       echo "Agência:\n";
+	       echo "    número: $this->numero\n";
 	}
 
 }
+
+?>
