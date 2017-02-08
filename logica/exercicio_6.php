@@ -10,3 +10,5 @@ for ($i = 0; $i < $numTriangulos; $i++) {
     	echo "\n";
      }
 }
+
+?>

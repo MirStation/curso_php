@@ -21,3 +21,5 @@ if ($nPrimeirosFibonacci == 1) {
 }
 
 echo "\n";
+
+?>

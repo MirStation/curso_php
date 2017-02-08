@@ -42,3 +42,5 @@ while($i < 100) {
 	 echo "Deu onda.\n";
 	 $i += 1;
 }
+
+?>
