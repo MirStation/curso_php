@@ -1,38 +1,46 @@
 <?php
 
 class Conta {
-	private $numero;
-	private $saldo;
-	private $limite;
+	private $numero = 0;
+	private $saldo = 0;
+	private $limite = 0;
+	private $agencia;
+
+	private $extrato = "";
 
 	public function __construct($numero, $saldo, $limite) {
 	       $this->numero = $numero;
 	       $this->saldo = $saldo;
 	       $this->limite = $limite;
+	       $this->extrato .= "{$this->saldo}\n";
 	}
 
-	public function getNumero() {
-	       return $this->numero;
+	public function deposita($valor) {
+	       $this->saldo += $valor;
+	       $this->extrato .= "+{$valor}\n";
+	       $this->extrato .= "{$this->saldo}\n";
 	}
 
-	public function setNumero($numero) {
-	       $this->numero = $numero;
+	public function saca($valor) {
+	       if ($valor <= $this->saldo) {
+	       	  $this->saldo -= $valor;
+		  $this->extrato .= "-{$valor}\n";
+		  $this->extrato .= "{$this->saldo}\n";
+	       } else {
+	       	  echo "Saldo insufuciente.\n"
+	       }
 	}
 
-	public function getSaldo() {
-	       return $this->saldo;
+	public function consultaSaldoDisponivel() {
+	       echo "{$this->saldo} R\$\n";
 	}
 
-	public function setSaldo($saldo) {
-	       $this->saldo = $saldo;
+	public function imprimeExtrato() {
+	       echo $this->extrato;
 	}
 
-	public function getLimite() {
-	       return $this->limite;
-	}
-
-	public function setLimite($limite) {
-	       $this->limite = $limite;
+	public function setAgencia($agencia) {
+	       $this->agencia = $agencia;
 	}
 	
 	public function imprimeConta() {
@@ -40,6 +48,10 @@ class Conta {
 	       echo "número: " . $this->numero . "\n";
 	       echo "saldo: " . $this->saldo . " R\$\n";
 	       echo "limite: " . $this->limite . " R\$\n";
+	}
+
+	public function imprimeAgencia() {
+	       $this->agencia->imprimeAgencia();
 	}
 
 }
