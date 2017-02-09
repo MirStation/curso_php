@@ -7,11 +7,24 @@ class Conta {
 	private $agencia = NULL;
 	private $extrato = [];
 
+	public static $contadorEstatico = 0;
+	public $contador = 0;
+	public $numeroContaAutomatico;
+
+	public static function zeraContador() {
+	       echo "Zerando contador ...\n";
+	       echo "Contas anteriores: " . self::$contadorEstatico . "\n";
+	       self::$contadorEstatico = 0;
+	}
+
 	public function __construct($numero, $saldo, $limite) {
 	       $this->numero = $numero;
 	       $this->saldo = $saldo;
 	       $this->limite = $limite;
 	       array_push($this->extrato, "$saldo R\$");
+	       $this->contador++;
+	       self::$contadorEstatico++;
+	       $this->numeroContaAutomatico = self::$contadorEstatico;
 	}
 
 	public function deposita($valor) {
