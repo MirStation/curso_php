@@ -1,8 +1,8 @@
 <?php
 
 class Funcionario {
-	private $nome;
-	private $salario;
+	protected $nome;
+	protected $salario;
 
 	public function __construct($nome, $salario) {
 	       $this->salario = $salario;
@@ -17,6 +17,10 @@ class Funcionario {
 	       echo "Funcionário:\n";
 	       echo "    nome: $this->nome\n";
 	       echo "    salário: $this->salario R\$\n";
+	}
+
+	public function calculaBonificacao() {
+	       echo $this->salario * 0.1;
 	}
 
 }
