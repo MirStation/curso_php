@@ -20,7 +20,7 @@ class Funcionario {
 	}
 
 	public function calculaBonificacao() {
-	       echo $this->salario * 0.1;
+	       return $this->salario * 0.1;
 	}
 
 }

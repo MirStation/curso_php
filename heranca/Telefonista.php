@@ -11,10 +11,13 @@ class Telefonista extends Funcionario
 	       parent::__construct($nome, $salario);
 	}
 
-	public function getEstacaoDeTrabalho() {
-	       return $this->estacaoDeTrabalho;
+	public function imprimeTelefonista() {
+	       echo "TELEFONISTA\n";
+	       echo $this->nome."\n";
+	       echo $this->salario."\n";
+	       echo $this->estacaoDeTrabalho."\n";
 	}
-
+	
 }
 
 ?>

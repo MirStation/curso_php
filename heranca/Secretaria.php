@@ -11,8 +11,11 @@ class Secretaria extends Funcionario
 	       parent::__construct($nome, $salario);
 	}
 
-	public function getRamal() {
-	       return $this->ramal;
+	public function imprimeSecretaria() {
+	       echo "SECRETARIA\n";
+	       echo $this->nome."\n";
+	       echo $this->salario."\n";
+	       echo $this->ramal."\n";
 	}
 
 }

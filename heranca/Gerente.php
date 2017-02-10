@@ -12,16 +12,16 @@ class Gerente extends Funcionario {
 	       parent::__construct($nome, $salario);
 	}
 
-	public function getUsuario() {
-	       return $this->usuario;
-	}
-
-	public function getSenha() {
-	       return $this->senha;
+	public function imprimeGerente() {
+	       echo "GERENTE\n";
+	       echo $this->nome."\n";
+	       echo $this->salario."\n";
+	       echo $this->usuario."\n";
+	       echo $this->senha."\n";
 	}
 
 	public function calculaBonificacao() {
-	       echo $this->salario * 0.6 + 100;
+	       return $this->salario * 0.6 + 100;
 	}
 
 }
